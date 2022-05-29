@@ -6,5 +6,5 @@ import lombok.Builder;
 public record ImmersionSensor(
         String name,
         Boolean value
-) implements Sensor<Boolean> {
+) implements Sensor {
 }

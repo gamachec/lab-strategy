@@ -16,7 +16,7 @@ public class MotionSensorStrategy implements SensorStrategy {
     }
 
     @Override
-    public List<Sensor<?>> extract(DeconzSensor deconzSensor) {
+    public List<Sensor> extract(DeconzSensor deconzSensor) {
         return List.of(MotionSensor.builder()
                 .name(deconzSensor.name())
                 .value(Boolean.valueOf(deconzSensor.state().get("presence")))

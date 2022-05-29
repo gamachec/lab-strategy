@@ -15,7 +15,7 @@ public class ImmersionSensorStrategy implements SensorStrategy {
     }
 
     @Override
-    public List<Sensor<?>> extract(DeconzSensor deconzSensor) {
+    public List<Sensor> extract(DeconzSensor deconzSensor) {
         return List.of(ImmersionSensor.builder()
                 .name(deconzSensor.name())
                 .value(Boolean.valueOf(deconzSensor.state().get("immersion")))

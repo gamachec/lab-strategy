@@ -18,7 +18,7 @@ public class WithStrategyService implements SensorService{
     private final DeconzClient deconzClient;
 
     @Override
-    public List<Sensor<?>> getSensors() {
+    public List<Sensor> getSensors() {
         return deconzClient.getSensors().stream()
                 .map(sensorExtractor::extract)
                 .flatMap(Collection::stream)

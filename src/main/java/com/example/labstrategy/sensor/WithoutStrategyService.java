@@ -4,19 +4,20 @@ import com.example.labstrategy.deconz.DeconzClient;
 import com.example.labstrategy.deconz.DeconzSensor;
 import com.example.labstrategy.sensor.model.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Service
+@Service
 @RequiredArgsConstructor
 public class WithoutStrategyService implements SensorService {
 
     private final DeconzClient deconzClient;
 
     @Override
-    public List<Sensor<?>> getSensors() {
+    public List<Sensor> getSensors() {
         var deconzSensors = deconzClient.getSensors();
 
         return deconzSensors.stream()
@@ -25,7 +26,7 @@ public class WithoutStrategyService implements SensorService {
                 .collect(Collectors.toList());
     }
 
-    private List<Sensor<?>> convertToSensor(DeconzSensor deconzSensor) {
+    private List<Sensor> convertToSensor(DeconzSensor deconzSensor) {
         var state = deconzSensor.state();
 
         if (state.containsKey("temperature") && state.containsKey("humidity")) {

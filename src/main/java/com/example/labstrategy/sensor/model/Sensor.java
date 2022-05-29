@@ -1,8 +1,8 @@
 package com.example.labstrategy.sensor.model;
 
-public interface Sensor<T> {
+public interface Sensor {
 
     String name();
 
-    T value();
+    Object value();
 }

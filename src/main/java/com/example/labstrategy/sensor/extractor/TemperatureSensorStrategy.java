@@ -18,7 +18,7 @@ public class TemperatureSensorStrategy implements SensorStrategy {
     }
 
     @Override
-    public List<Sensor<?>> extract(DeconzSensor deconzSensor) {
+    public List<Sensor> extract(DeconzSensor deconzSensor) {
         var state = deconzSensor.state();
 
         return List.of(TemperatureSensor.builder()

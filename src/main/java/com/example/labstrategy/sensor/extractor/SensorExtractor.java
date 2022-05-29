@@ -14,7 +14,7 @@ public class SensorExtractor {
 
     private final Collection<SensorStrategy> sensorStrategies;
 
-    public List<Sensor<?>> extract(DeconzSensor deconzSensor) {
+    public List<Sensor> extract(DeconzSensor deconzSensor) {
         return sensorStrategies.stream()
                 .filter(sensorStrategy -> sensorStrategy.support(deconzSensor))
                 .map(sensorStrategy -> sensorStrategy.extract(deconzSensor))

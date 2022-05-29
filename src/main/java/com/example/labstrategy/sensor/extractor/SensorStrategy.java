@@ -8,5 +8,5 @@ import java.util.List;
 public interface SensorStrategy {
     boolean support(DeconzSensor deconzSensor);
 
-    List<Sensor<?>> extract(DeconzSensor deconzSensor);
+    List<Sensor> extract(DeconzSensor deconzSensor);
 }

@@ -6,5 +6,5 @@ import lombok.Builder;
 public record HumiditySensor(
         String name,
         Double value
-) implements Sensor<Double> {
+) implements Sensor {
 }

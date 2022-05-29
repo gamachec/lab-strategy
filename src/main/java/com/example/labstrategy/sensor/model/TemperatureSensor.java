@@ -6,5 +6,5 @@ import lombok.Builder;
 public record TemperatureSensor(
         String name,
         Double value
-) implements Sensor<Double> {
+) implements Sensor {
 }
