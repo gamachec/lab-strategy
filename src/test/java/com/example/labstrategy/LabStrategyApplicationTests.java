@@ -2,14 +2,13 @@ package com.example.labstrategy;
 
 import com.example.labstrategy.deconz.DeconzClient;
 import com.example.labstrategy.deconz.DeconzSensor;
-import com.example.labstrategy.sensor.SensorService;
+import com.example.labstrategy.sensor.SensorGatewayAdapter;
 import com.example.labstrategy.sensor.model.HumiditySensor;
 import com.example.labstrategy.sensor.model.ImmersionSensor;
 import com.example.labstrategy.sensor.model.MotionSensor;
 import com.example.labstrategy.sensor.model.TemperatureSensor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -25,9 +24,8 @@ class LabStrategyApplicationTests {
     @MockBean
     private DeconzClient deconzClient;
 
-    @Qualifier("withoutStrategyService")
     @Autowired
-    private SensorService sensorService;
+    private SensorGatewayAdapter sensorGatewayAdapter;
 
     @Test
     void getSensors_should_return_complete_list_of_sensors() {
@@ -41,7 +39,7 @@ class LabStrategyApplicationTests {
         );
 
         // When
-        var obtainedSensors = sensorService.getSensors();
+        var obtainedSensors = sensorGatewayAdapter.getSensors();
 
         // Then
         assertThat(obtainedSensors).satisfiesExactlyInAnyOrder(

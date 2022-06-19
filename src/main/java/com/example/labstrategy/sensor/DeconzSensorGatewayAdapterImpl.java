@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class WithoutStrategyService implements SensorService {
+public class DeconzSensorGatewayAdapterImpl implements SensorGatewayAdapter {
 
     private final DeconzClient deconzClient;
 
@@ -23,7 +22,7 @@ public class WithoutStrategyService implements SensorService {
         return deconzSensors.stream()
                 .map(this::convertToSensor)
                 .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private List<Sensor> convertToSensor(DeconzSensor deconzSensor) {
