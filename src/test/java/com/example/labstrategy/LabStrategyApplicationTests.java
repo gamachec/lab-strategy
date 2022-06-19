@@ -25,7 +25,7 @@ class LabStrategyApplicationTests {
     @MockBean
     private DeconzClient deconzClient;
 
-    @Qualifier("withStrategyService")
+    @Qualifier("withoutStrategyService")
     @Autowired
     private SensorService sensorService;
 
